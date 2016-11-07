@@ -1,1 +1,1 @@
-# first-extension
+# Practice Kana
