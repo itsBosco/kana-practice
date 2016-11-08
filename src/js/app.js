@@ -6,11 +6,9 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
     var allKana;
     var inUseKana = [{}];
     var hashKeys = [];
-    console.log(inUseKana);
 
     function getAllKana() {
         $http.get('src/kana.json').then(function (data) {
-            console.log(data);
             allKana = data.data;
             seperateHiraAndKata();
         });
