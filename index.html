@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kana Practice</title>
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+
+<body ng-app="kanaApp">
+
+    <container ng-controller="MainController">
+
+        <aside>
+            <h3>HIRAGANA</h3>
+            <div class="row" ng-init="featureClass=false" ng-class="{'active': featureClass}" ng-repeat="kanaRow in allHiragana track by $index" ng-click="addKanaRow(kanaRow); kanaRow.selected='true';featureClass=!featureClass">
+                <p class="character-container" ng-repeat="kana in kanaRow" >{{kana.kana}}</p>
+            </div>
+        </aside>
+
+        <main class="practice-area centered">
+            <p class="current-character">{{currentKana}}</p>
+            <input class="users-answer" type="text" ng-model="userAnswer" ng-keydown="($event.which === 13 || $event.which === 32) && checkAnswer()">
+        </main>
+
+    </container>
+
+    <script src="src/js/libs/angular.min.js"></script>
+    <script src="src/js/app.js"></script>
+</body>
+
+</html>
