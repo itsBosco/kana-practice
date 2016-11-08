@@ -35,6 +35,7 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
 
     //Checks answer. Change symbol if correct. Alert user if incorrect
     function checkAnswer() {
+        $scope.userAnswer = $scope.userAnswer.toLowerCase();
         if ($scope.userAnswer == $scope.currentRomaji || $scope.userAnswer == $scope.currentKana) {
             setCurrentKana();
             clearAnswerBox();
