@@ -10,7 +10,7 @@
 <body ng-app="kanaApp">
 
     <container ng-controller="MainController">
-        <button class="side-btn" ng-class="{'removed': !sideBarHidden}">SIDEBAR</button>
+        <button class="side-btn" ng-class="{'hidden': !sideBarHidden}">SIDEBAR</button>
         <aside ng-class="{'hidden': sideBarHidden}">
             <h3 class="hiragana-toggle" ng-init="removed=false" ng-click="removed=!removed">HIRAGANA</h3>
             <div class="row" ng-init="featureClass=false" ng-class="[{'active': featureClass}, {'removed': removed}]" ng-repeat="kanaRow in allHiragana track by $index"

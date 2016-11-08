@@ -24,6 +24,7 @@ h3{
     font-size: 15rem;
     margin: 0 auto;
     width: 15rem;
+    transition: all 0.5s;
 }
 
 .centered {
@@ -53,17 +54,19 @@ container{
 main{
     width: 80%;
     float: right;
-    z-index: 0;
 }
 aside{
     width: 20%;
     left: 0;
+    top: 0;
     cursor: pointer;
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
     text-align: center;
-    z-index: 99;
+    position: absolute;
+    transform: translateX(0);
+    transition: 0.4s;
 }
 
 .character-container{
@@ -102,8 +105,9 @@ p{
 
 .hidden{
     visibility: hidden;
+    transform: translateX(-100%);
     opacity: 0;
-    transition: 0.2s;
+    transition: 0.4s;
 }
 
 .side-btn{
@@ -112,6 +116,9 @@ p{
     background: rgba(255,255,255,0.2);
     border: none;
     color: #eee;
+    transform: translateX(0);
+    transition: 0.4s;
+    cursor: pointer;
 }
 
 .error{
