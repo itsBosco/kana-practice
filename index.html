@@ -10,10 +10,10 @@
 <body ng-app="kanaApp">
 
     <container ng-controller="MainController">
-
-        <aside>
-            <h3 class="hiragana-toggle" ng-init="hidden=false" ng-click="hidden=!hidden">HIRAGANA</h3>
-            <div class="row hiragana" ng-init="featureClass=false" ng-class="[{'active': featureClass}, {'hidden': hidden}]" ng-repeat="kanaRow in allHiragana track by $index"
+        <button class="side-btn" ng-class="{'removed': !sideBarHidden}">SIDEBAR</button>
+        <aside ng-class="{'hidden': sideBarHidden}">
+            <h3 class="hiragana-toggle" ng-init="removed=false" ng-click="removed=!removed">HIRAGANA</h3>
+            <div class="row hiragana" ng-init="featureClass=false" ng-class="[{'active': featureClass}, {'removed': removed}]" ng-repeat="kanaRow in allHiragana track by $index"
                 ng-click="toggleKanaRow(kanaRow); kanaRow.selected='true';featureClass=!featureClass">
                 <div class="character-container" ng-repeat="kana in kanaRow">
                     <p>{{kana.kana}}</p>
@@ -26,7 +26,7 @@
         <main class="practice-area centered">
             <p ng-show="!currentKana">Select Kana To Practice</p>
             <p class="current-character">{{currentKana}}</p>
-            <input class="users-answer" type="text" ng-model="userAnswer" ng-keydown="($event.which === 13 || $event.which === 32) && checkAnswer()">
+            <input class="users-answer" type="text" ng-focus="sideBarHidden = true" ng-blur="sideBarHidden = false" ng-model="userAnswer" ng-keydown="($event.which === 13 || $event.which === 32) && checkAnswer()">
         </main>
 
     </container>

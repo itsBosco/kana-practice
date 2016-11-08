@@ -92,11 +92,24 @@ p{
     background-color: rgba(255,255,255,0.1);
 }
 
-.hidden{
+.removed{
     visibility: hidden;
     display: none;
 }
 
+.hidden{
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.side-btn{
+    height: 50px;
+    width: 100px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: #eee;
+}
 
 ::-webkit-scrollbar {
     width: 12px;

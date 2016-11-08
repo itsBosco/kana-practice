@@ -79,6 +79,7 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
     }
 
     //////////
+    $scope.sideBarHidden = false;
     $scope.checkAnswer = checkAnswer;
     getAllKana();
 }]);
