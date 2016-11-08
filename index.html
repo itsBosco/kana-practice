@@ -24,6 +24,7 @@
         </aside>
 
         <main class="practice-area centered">
+            <p ng-show="!currentKana">Select Kana To Practice</p>
             <p class="current-character">{{currentKana}}</p>
             <input class="users-answer" type="text" ng-model="userAnswer" ng-keydown="($event.which === 13 || $event.which === 32) && checkAnswer()">
         </main>

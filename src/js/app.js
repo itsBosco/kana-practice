@@ -29,9 +29,7 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
             $scope.currentRomaji = inUseKana[randomNumber].romaji;
         }
         else{
-            //TODO: Alert user that there is no kana selected
             $scope.currentKana = "";
-            $scope.currentRomaji = "";
         }
     }
 
