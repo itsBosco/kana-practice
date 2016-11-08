@@ -13,7 +13,7 @@
 
         <aside>
             <h3>HIRAGANA</h3>
-            <div class="row" ng-init="featureClass=false" ng-class="{'active': featureClass}" ng-repeat="kanaRow in allHiragana track by $index" ng-click="addKanaRow(kanaRow); kanaRow.selected='true';featureClass=!featureClass">
+            <div class="row" ng-init="featureClass=false" ng-class="{'active': featureClass}" ng-repeat="kanaRow in allHiragana track by $index" ng-click="toggleKanaRow(kanaRow); kanaRow.selected='true';featureClass=!featureClass">
                 <p class="character-container" ng-repeat="kana in kanaRow" >{{kana.kana}}</p>
             </div>
         </aside>

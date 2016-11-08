@@ -4,7 +4,7 @@ var app = angular.module("kanaApp", []);
 
 app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
     var allKana;
-    var inUseKana = [{}];
+    var inUseKana = [];
     var hashKeys = [];
 
     function getAllKana() {
@@ -22,16 +22,17 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
 
     //Sets currently displayed symbol using random number
     function setCurrentKana() {
-
-        var randomNumber = Math.floor(Math.random() * inUseKana.length);
-        //checks if random number is the same as the last
-        // while (randomNumber == $scope.tempRandomNumber) {
-        //     randomNumber = Math.floor(Math.random() * inUseKana.length);
-        // }
-        $scope.tempRandomNumber = randomNumber;
-
-        $scope.currentKana = inUseKana[randomNumber].kana;
-        $scope.currentRomaji = inUseKana[randomNumber].romaji;
+        //if there is no selected kana
+        if (inUseKana.length !== 0) {
+            var randomNumber = Math.floor(Math.random() * inUseKana.length);
+            $scope.currentKana = inUseKana[randomNumber].kana;
+            $scope.currentRomaji = inUseKana[randomNumber].romaji;
+        }
+        else{
+            //TODO: Alert user that there is no kana selected
+            $scope.currentKana = "";
+            $scope.currentRomaji = "";
+        }
     }
 
     //Checks answer. Change symbol if correct. Alert user if incorrect
@@ -42,7 +43,7 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
         }
         else {
             clearAnswerBox();
-            //TODO: Alert user
+            //TODO: Alert user that they answered wrong
         }
 
     }
@@ -52,33 +53,34 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
         $scope.userAnswer = "";
     }
 
-    //Handles adding and removing kana
-    $scope.addKanaRow = function (kanaRow) {
+    //Handles adding and removing of kana
+    $scope.toggleKanaRow = function (kanaRow) {
         if (hashKeys.indexOf(kanaRow[0].$$hashKey) >= 0) {
             hashKeys.pop(kanaRow[0].$$hashKey);
-            kanaRow.forEach(function (kana) {
-                inUseKana.pop(kana);
-            });
-            checkInUseKana();
+            removeInUseKana(kanaRow);
             setCurrentKana();
         }
         else {
             hashKeys.push(kanaRow[0].$$hashKey);
-            kanaRow.forEach(function (kana) {
-                inUseKana.push(kana);
-            });
+            addInUseKana(kanaRow);
             setCurrentKana();
         }
 
     };
 
-    //Handles error caused by removing all inusekana
-    function checkInUseKana(){
-        if(inUseKana === null){
-            inUseKana = [{}];
-        }
+    function removeInUseKana(kanaRow) {
+        kanaRow.forEach(function (kana) {
+                inUseKana.pop(kana);
+            });
     }
 
+    function addInUseKana(kanaRow){
+        kanaRow.forEach(function (kana) {
+                inUseKana.push(kana);
+            });
+    }
+
+    //////////
     $scope.checkAnswer = checkAnswer;
     getAllKana();
 }]);
