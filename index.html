@@ -12,10 +12,15 @@
     <container ng-controller="MainController">
 
         <aside>
-            <h3>HIRAGANA</h3>
-            <div class="row" ng-init="featureClass=false" ng-class="{'active': featureClass}" ng-repeat="kanaRow in allHiragana track by $index" ng-click="toggleKanaRow(kanaRow); kanaRow.selected='true';featureClass=!featureClass">
-                <p class="character-container" ng-repeat="kana in kanaRow" >{{kana.kana}}</p>
+            <h3 class="hiragana-toggle" ng-init="hidden=false" ng-click="hidden=!hidden">HIRAGANA</h3>
+            <div class="row hiragana" ng-init="featureClass=false" ng-class="[{'active': featureClass}, {'hidden': hidden}]" ng-repeat="kanaRow in allHiragana track by $index"
+                ng-click="toggleKanaRow(kanaRow); kanaRow.selected='true';featureClass=!featureClass">
+                <div class="character-container" ng-repeat="kana in kanaRow">
+                    <p>{{kana.kana}}</p>
+                    <p class="small-text"> {{kana.romaji}} </p>
+                </div>
             </div>
+            <h3>KATAKANA</h3>
         </aside>
 
         <main class="practice-area centered">

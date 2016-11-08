@@ -56,20 +56,41 @@ aside{
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
+    text-align: center;
 }
 
 .character-container{
     font-size: 30px;
     float: left;
-    margin: 5px 0;
+    margin-left: 5px;
 }
 
+.small-text{
+    font-size: 10px;
+    margin-top: 0;
+}
+
+p{
+    margin-top: 2px;
+    margin-bottom: 0;
+}
 .row{
     display: table;
+    text-align: center;
+    width: 100%;
+}
+
+.row:hover{
+    background-color: rgba(255,255,255,0.1);
 }
 
 .active{
-    background-color: white;
+    background-color: rgba(255,255,255,0.1);
+}
+
+.hidden{
+    visibility: hidden;
+    display: none;
 }
 
 
