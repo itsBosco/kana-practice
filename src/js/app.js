@@ -4,8 +4,9 @@ var app = angular.module("kanaApp", []);
 
 app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
     var allKana;
-    var inUseKana = [{"kanji":"あ","romaji": "a"}];
+    var inUseKana = [{}];
     var hashKeys = [];
+    console.log(inUseKana);
 
     function getAllKana() {
         $http.get('src/kana.json').then(function (data) {
@@ -56,7 +57,7 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
     //Handles adding and removing kana
     $scope.addKanaRow = function (kanaRow) {
         if (hashKeys.indexOf(kanaRow[0].$$hashKey) >= 0) {
-            hashKeys.pop(kanaRow[0].$$hashKey)
+            hashKeys.pop(kanaRow[0].$$hashKey);
             kanaRow.forEach(function (kana) {
                 inUseKana.pop(kana);
             });
@@ -76,7 +77,7 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
     //Handles error caused by removing all inusekana
     function checkInUseKana(){
         if(inUseKana === null){
-            inUseKana = [{"kanji":"あ","romaji": "a"}];
+            inUseKana = [{}];
         }
     }
 
