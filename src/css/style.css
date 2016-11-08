@@ -114,6 +114,10 @@ p{
     color: #eee;
 }
 
+.error{
+    color: #e34a3e;
+}
+
 ::-webkit-scrollbar {
     width: 12px;
 }

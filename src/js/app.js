@@ -38,10 +38,11 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
         if ($scope.userAnswer == $scope.currentRomaji || $scope.userAnswer == $scope.currentKana) {
             setCurrentKana();
             clearAnswerBox();
+            $scope.incorrectAnswer = false;
         }
         else {
             clearAnswerBox();
-            //TODO: Alert user that they answered wrong
+            $scope.incorrectAnswer = true;
         }
 
     }
