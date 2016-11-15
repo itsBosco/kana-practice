@@ -2,7 +2,8 @@
 
 var app = angular.module("kanaApp", []);
 
-app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
+app.controller('MainController', ['$http', function ($http) {
+    var self = this;
     var allKana;
     var inUseKana = [];
     var hashKeys = [];
@@ -16,8 +17,8 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
 
     //separtes hiragana and katakana
     function seperateHiraAndKata() {
-        $scope.allHiragana = allKana[0];
-        $scope.allKatakana = allKana[1];
+        self.allHiragana = allKana[0];
+        self.allKatakana = allKana[1];
     }
 
     //Sets currently displayed symbol using random number
@@ -25,36 +26,36 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
         //if there is no selected kana
         if (inUseKana.length !== 0) {
             var randomNumber = Math.floor(Math.random() * inUseKana.length);
-            $scope.currentKana = inUseKana[randomNumber].kana;
-            $scope.currentRomaji = inUseKana[randomNumber].romaji;
+            self.currentKana = inUseKana[randomNumber].kana;
+            self.currentRomaji = inUseKana[randomNumber].romaji;
         }
         else{
-            $scope.currentKana = "";
+            self.currentKana = "";
         }
     }
 
     //Checks answer. Change symbol if correct. Alert user if incorrect
     function checkAnswer() {
-        $scope.userAnswer = $scope.userAnswer.toLowerCase();
-        if ($scope.userAnswer == $scope.currentRomaji || $scope.userAnswer == $scope.currentKana) {
+        self.userAnswer = self.userAnswer.toLowerCase();
+        if (self.userAnswer == self.currentRomaji || self.userAnswer == self.currentKana) {
             setCurrentKana();
             clearAnswerBox();
-            $scope.incorrectAnswer = false;
+            self.incorrectAnswer = false;
         }
         else {
             clearAnswerBox();
-            $scope.incorrectAnswer = true;
+            self.incorrectAnswer = true;
         }
 
     }
 
     //Clears user input
     function clearAnswerBox() {
-        $scope.userAnswer = "";
+        self.userAnswer = "";
     }
 
     //Handles adding and removing of kana
-    $scope.toggleKanaRow = function (kanaRow) {
+    self.toggleKanaRow = function (kanaRow) {
         if (hashKeys.indexOf(kanaRow[0].$$hashKey) >= 0) {
             hashKeys.pop(kanaRow[0].$$hashKey);
             removeInUseKana(kanaRow);
@@ -81,7 +82,7 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
     }
 
     //////////
-    $scope.sideBarHidden = false;
-    $scope.checkAnswer = checkAnswer;
+    self.sideBarHidden = false;
+    self.checkAnswer = checkAnswer;
     getAllKana();
 }]);

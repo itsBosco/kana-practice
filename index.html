@@ -12,20 +12,20 @@
 
 <body ng-app="kanaApp">
 
-    <container ng-controller="MainController">
+    <container ng-controller="MainController as main">
         <button class="side-btn" ng-class="{'hidden': !sideBarHidden}">SIDEBAR</button>
         <aside ng-class="{'hidden': sideBarHidden}">
             <h3 class="hiragana-toggle" ng-init="removed=false" ng-click="removed=!removed">HIRAGANA</h3>
-            <div class="row" ng-init="featureClass=false" ng-class="[{'active': featureClass}, {'removed': removed}]" ng-repeat="kanaRow in allHiragana track by $index"
-                ng-click="toggleKanaRow(kanaRow); kanaRow.selected='true';featureClass=!featureClass">
+            <div class="row" ng-init="featureClass=false" ng-class="[{'active': featureClass}, {'removed': removed}]" ng-repeat="kanaRow in main.allHiragana track by $index"
+                ng-click="main.toggleKanaRow(kanaRow); main.kanaRow.selected='true';main.featureClass=!featureClass">
                 <div class="character-container" ng-repeat="kana in kanaRow">
                     <p>{{kana.kana}}</p>
                     <p class="small-text"> {{kana.romaji}} </p>
                 </div>
             </div>
-            <h3 class="hiragana-toggle" ng-init="kataRemoved=true" ng-click="kataRemoved=!kataRemoved">KATAKANA</h3>
-            <div class="row" ng-init="featureClass=false" ng-class="[{'active': featureClass}, {'removed': kataRemoved}]" ng-repeat="kanaRow in allKatakana track by $index"
-                ng-click="toggleKanaRow(kanaRow); kanaRow.selected='true';featureClass=!featureClass">
+            <h3 class="hiragana-toggle" ng-init="kataRemoved=true" ng-click="main.kataRemoved=!main.kataRemoved">KATAKANA</h3>
+            <div class="row" ng-init="featureClass=false" ng-class="[{'active': featureClass}, {'removed': kataRemoved}]" ng-repeat="kanaRow in main.allKatakana track by $index"
+                ng-click="main.toggleKanaRow(kanaRow); main.kanaRow.selected='true';main.featureClass=!featureClass">
                 <div class="character-container" ng-repeat="kana in kanaRow">
                     <p>{{kana.kana}}</p>
                     <p class="small-text"> {{kana.romaji}} </p>
@@ -35,10 +35,10 @@
 
         <main class="practice-area centered">
             <p ng-show="!currentKana">Select Kana To Practice</p>
-            <p class="current-character">{{currentKana}}</p>
-            <p class="error" ng-show="incorrectAnswer">Incorrect Answer</p>
-            <input class="users-answer" type="text" ng-focus="sideBarHidden = true" ng-blur="sideBarHidden = false" ng-model="userAnswer"
-                ng-keydown="($event.which === 13 || $event.which === 32) && checkAnswer()">
+            <p class="current-character">{{main.currentKana}}</p>
+            <p class="error" ng-show="main.incorrectAnswer">Incorrect Answer</p>
+            <input class="users-answer" type="text" ng-focus="sideBarHidden = true" ng-blur="sideBarHidden = false" ng-model="main.userAnswer"
+                ng-keydown="($event.which === 13 || $event.which === 32) && main.checkAnswer()">
         </main>
 
     </container>
