@@ -14,8 +14,9 @@
 
     <container ng-cloak ng-controller="MainController as main">
         <button class="side-btn" ng-class="{'hidden': !sideBarHidden}">SIDEBAR</button>
+        <!--sidebar-->
         <aside ng-class="{'hidden': sideBarHidden}">
-
+            <!-- HIRAGANA-->
             <h3 class="hiragana-toggle" ng-init="removed=false" ng-click="removed=!removed">HIRAGANA</h3>
             <div class="row" ng-init="featureClass=false" ng-class="[{'active': featureClass}, {'removed': removed}]" ng-repeat="kanaRow in main.allHiragana track by $index"
                 ng-click="main.toggleKanaRow(kanaRow); main.kanaRow.selected='true'; featureClass=!featureClass">
@@ -24,7 +25,7 @@
                     <p class="small-text"> {{kana.romaji}} </p>
                 </div>
             </div>
-
+            <!--KATAKANA -->
             <h3 class="hiragana-toggle" ng-init="kataRemoved=true" ng-click="kataRemoved=!kataRemoved">KATAKANA</h3>
             <div class="row" ng-init="featureClass=false" ng-class="[{'active': featureClass}, {'removed': kataRemoved}]" ng-repeat="kanaRow in main.allKatakana track by $index"
                 ng-click="main.toggleKanaRow(kanaRow); main.kanaRow.selected='true'; featureClass=!featureClass">
@@ -37,7 +38,7 @@
         </aside>
 
 
-
+        <!-- Practice area-->
         <main class="practice-area centered">
             <p ng-show="!main.currentKana">Select Kana To Practice</p>
             <p class="current-character">{{main.currentKana}}</p>
