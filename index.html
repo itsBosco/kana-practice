@@ -12,7 +12,7 @@
 
 <body ng-app="kanaApp">
 
-    <container ng-controller="MainController as main">
+    <container ng-cloak ng-controller="MainController as main">
         <button class="side-btn" ng-class="{'hidden': !sideBarHidden}">SIDEBAR</button>
         <aside ng-class="{'hidden': sideBarHidden}">
 
