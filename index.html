@@ -34,7 +34,7 @@
         </aside>
 
         <main class="practice-area centered">
-            <p ng-show="!currentKana">Select Kana To Practice</p>
+            <p ng-show="!main.currentKana">Select Kana To Practice</p>
             <p class="current-character">{{main.currentKana}}</p>
             <p class="error" ng-show="main.incorrectAnswer">Incorrect Answer</p>
             <input class="users-answer" type="text" ng-focus="sideBarHidden = true" ng-blur="sideBarHidden = false" ng-model="main.userAnswer"
