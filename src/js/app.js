@@ -8,6 +8,7 @@ app.controller('MainController', ['$http', function ($http) {
     var inUseKana = [];
     var hashKeys = [];
 
+    //gets all kana from kana.json
     function getAllKana() {
         $http.get('src/kana.json').then(function (data) {
             allKana = data.data;
