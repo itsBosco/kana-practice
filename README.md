@@ -9,8 +9,3 @@ Fully functional offline.
 ## Live Demo
 
 https://itsbosco.github.io/kana-practice/
-
-## Features to be added
-
-+ Incorrect answer counter
-+ Select/Unselect all button
