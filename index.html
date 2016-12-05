@@ -45,6 +45,7 @@
             <p class="error" ng-show="main.incorrectAnswer">Incorrect Answer</p>
             <input class="users-answer" type="text" ng-focus="sideBarHidden = true" ng-blur="sideBarHidden = false" ng-model="main.userAnswer"
                 ng-keydown="($event.which === 13 || $event.which === 32) && main.checkAnswer()">
+            <p>{{main.currentRomaji}}</p>
         </main>
 
     </container>

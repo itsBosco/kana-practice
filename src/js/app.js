@@ -22,16 +22,17 @@ app.controller('MainController', ['$http', function ($http) {
         self.allKatakana = allKana[1];
     }
 
-    //Sets currently displayed symbol using random number
+    //Sets currently displayed kana and romaji using random number
     function setCurrentKana() {
-        //if there is no selected kana
         if (inUseKana.length !== 0) {
             var randomNumber = Math.floor(Math.random() * inUseKana.length);
             self.currentKana = inUseKana[randomNumber].kana;
             self.currentRomaji = inUseKana[randomNumber].romaji;
         }
+        //if there is no selected kana
         else{
             self.currentKana = "";
+            self.currentRomaji = "";
         }
     }
 
@@ -55,7 +56,7 @@ app.controller('MainController', ['$http', function ($http) {
         self.userAnswer = "";
     }
 
-    //Handles adding and removing of kana
+    //Handles adding and removing of kana rows
     self.toggleKanaRow = function (kanaRow) {
         if (hashKeys.indexOf(kanaRow[0].$$hashKey) >= 0) {
             hashKeys.pop(kanaRow[0].$$hashKey);
@@ -70,12 +71,14 @@ app.controller('MainController', ['$http', function ($http) {
 
     };
 
+    //removes kana that has been unselected
     function removeInUseKana(kanaRow) {
         kanaRow.forEach(function (kana) {
                 inUseKana.pop(kana);
             });
     }
 
+    //adds kana that has been selected
     function addInUseKana(kanaRow){
         kanaRow.forEach(function (kana) {
                 inUseKana.push(kana);
