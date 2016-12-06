@@ -25,6 +25,8 @@ app.controller('MainController', ['$http', function ($http) {
 
     //Sets currently displayed kana and romaji using random number
     function setCurrentKana() {
+        self.currentIncorrect = 0;
+        self.showAnswer = false;
         if (inUseKana.length !== 0) {
             var randomNumber = Math.floor(Math.random() * inUseKana.length);
             self.currentKana = inUseKana[randomNumber].kana;
@@ -44,7 +46,6 @@ app.controller('MainController', ['$http', function ($http) {
             setCurrentKana();
             clearAnswerBox();
             self.incorrectAnswer = false;
-            self.currentIncorrect = 0;
         }
         else {
             clearAnswerBox();
