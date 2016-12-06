@@ -36,7 +36,7 @@ app.controller('MainController', ['$http', function ($http) {
         }
     }
 
-    //Checks answer. Change symbol if correct. Alert user if incorrect
+    //Checks answer. Change symbol if correct. Else do things if incorrect
     function checkAnswer() {
         self.userAnswer = self.userAnswer.toLowerCase();
         if (self.userAnswer == self.currentRomaji || self.userAnswer == self.currentKana) {
