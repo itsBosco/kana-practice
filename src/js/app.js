@@ -13,6 +13,7 @@ app.controller('MainController', ['$http', function ($http) {
         $http.get('src/kana.json').then(function (data) {
             allKana = data.data;
             seperateHiraAndKata();
+            self.currentIncorrect = 0;
         });
     }
 
@@ -43,10 +44,13 @@ app.controller('MainController', ['$http', function ($http) {
             setCurrentKana();
             clearAnswerBox();
             self.incorrectAnswer = false;
+            self.currentIncorrect = 0;
         }
         else {
             clearAnswerBox();
+            checkIfThreeWrong();
             self.incorrectAnswer = true;
+            self.currentIncorrect++;
         }
 
     }
@@ -54,6 +58,11 @@ app.controller('MainController', ['$http', function ($http) {
     //Clears user input
     function clearAnswerBox() {
         self.userAnswer = "";
+    }
+
+    //Check if the user has missed three times
+    function checkIfThreeWrong() {
+        self.currentIncorrect >= 3 ? self.showAnswer = true : self.showAnswer = false;
     }
 
     //Handles adding and removing of kana rows
