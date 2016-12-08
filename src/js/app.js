@@ -68,23 +68,24 @@ app.controller('MainController', ['$http', function ($http) {
 
     //Handles adding and removing of kana rows
     self.toggleKanaRow = function (kanaRow) {
-        if (hashKeys.indexOf(kanaRow[0].$$hashKey) >= 0) {
-            hashKeys.pop(kanaRow[0].$$hashKey);
+        var hashKeyIndex = hashKeys.indexOf(kanaRow[0].$$hashKey);
+        if (hashKeyIndex >= 0) { //checks if the kanarow is in use
+            hashKeys.splice(hashKeyIndex, 1);
             removeInUseKana(kanaRow);
             setCurrentKana();
         }
-        else {
+        else { //else add the kanarow
             hashKeys.push(kanaRow[0].$$hashKey);
             addInUseKana(kanaRow);
             setCurrentKana();
         }
-
     };
 
     //removes kana that has been unselected
     function removeInUseKana(kanaRow) {
         kanaRow.forEach(function (kana) {
-                inUseKana.pop(kana);
+                var kanaIndex = inUseKana.indexOf(kana);
+                inUseKana.splice(kanaIndex, 1);
             });
     }
 
