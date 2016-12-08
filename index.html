@@ -19,7 +19,7 @@
             <!-- HIRAGANA-->
             <h3 class="hiragana-toggle" ng-init="removed=false" ng-click="removed=!removed">HIRAGANA</h3>
             <div class="row" ng-init="featureClass=false" ng-class="[{'active': featureClass}, {'removed': removed}]" ng-repeat="kanaRow in main.allHiragana track by $index"
-                ng-click="main.toggleKanaRow(kanaRow); main.kanaRow.selected='true'; featureClass=!featureClass">
+                ng-click="main.toggleKanaRow(kanaRow);  featureClass=!featureClass">
                 <div class="character-container" ng-repeat="kana in kanaRow">
                     <p>{{kana.kana}}</p>
                     <p class="small-text"> {{kana.romaji}} </p>
@@ -28,7 +28,7 @@
             <!--KATAKANA -->
             <h3 class="hiragana-toggle" ng-init="kataRemoved=true" ng-click="kataRemoved=!kataRemoved">KATAKANA</h3>
             <div class="row" ng-init="featureClass=false" ng-class="[{'active': featureClass}, {'removed': kataRemoved}]" ng-repeat="kanaRow in main.allKatakana track by $index"
-                ng-click="main.toggleKanaRow(kanaRow); main.kanaRow.selected='true'; featureClass=!featureClass">
+                ng-click="main.toggleKanaRow(kanaRow); featureClass=!featureClass">
                 <div class="character-container" ng-repeat="kana in kanaRow">
                     <p>{{kana.kana}}</p>
                     <p class="small-text"> {{kana.romaji}} </p>
