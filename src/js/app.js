@@ -19,8 +19,8 @@ app.controller('MainController', ['$http', function ($http) {
 
     //separtes hiragana and katakana
     function seperateHiraAndKata() {
-        self.allHiragana = allKana[0];
-        self.allKatakana = allKana[1];
+        self.allHiragana = allKana['hiragana'];
+        self.allKatakana = allKana['katakana'];
     }
 
     //Sets currently displayed kana and romaji using random number
